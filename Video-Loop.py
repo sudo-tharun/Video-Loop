@@ -7,22 +7,22 @@ from ffpyplayer.player import MediaPlayer
 import pytube,pygame
 
 
-def setLoop(startpoint,endpoint): 
+def setLoop(startpoint,endpoint): #Playing the video
     clip=VideoFileClip("Retrieved Video.mp4")
-    clip = clip.subclip(startpoint,endpoint)
-    clip.preview()
+    clip = clip.subclip(startpoint,endpoint) #Retrieving requried part of the video
+    clip.preview() #plays the clip
     clip.close()
 
 
-def setDuration(title):
+def setDuration(title): #setting the duration of the video to be played
     clip = VideoFileClip(title)
-    duration=clip.duration
+    duration=clip.duration #extracting duration of the clip
     print("\n Duration of the clip is: " , duration)
     print("\n Give input without any special characters (in seconds)!!")
     startpoint=int(input("\n Enter the starting point from where the video to be played: "))
     endpoint=int(input("\n Enter the end point of the video till where the video to be played: "))
     try:
-        if startpoint<0 or endpoint>duration:
+        if startpoint<0 or endpoint>duration: #checking validity of duration
             print("\n Duration invalid!")
             c=int(input("\n Do you wish to try again? \n 1. Retry   2. Exit"))
             if c==1:
@@ -42,7 +42,7 @@ def setDuration(title):
     return
 
 
-def retrieveVideo(URL):
+def retrieveVideo(URL): #Function to retrieve the details and video from YouTube
     try:
         yt = YouTube(URL)
         print("\n Retrieving Video details....")
@@ -69,7 +69,7 @@ def retrieveVideo(URL):
         time.sleep(2)
         print("\n Speed of retrieval depends on your internet speed and the quality of video chosen!")
         nameoffile="Retrieved video"
-        ys.download(filename=nameoffile)
+        ys.download(filename=nameoffile) #downloading video
         print("\n Your video is almost ready to play!!")
         time.sleep(3)
         print("\n Retrieval completed!!")
@@ -86,8 +86,8 @@ def retrieveVideo(URL):
             exit()
     return
 
-
-def changeNameofFile(nameoffile):
+ 
+def changeNameofFile(nameoffile): #renaming downloaded video
     print("\n The name should not include any special characters. Only alphabets are allowed!!")
     newName=input("\n Enter the name to which the file has to modified: ")
     newName+=".mp4"
@@ -105,11 +105,11 @@ def mainFunction():
     if choiceoffile==1:
         changeNameofFile("Retrieved Video.mp4")
     else:
-        os.remove("Retrieved Video.mp4")
+        os.remove("Retrieved Video.mp4") #deleting video
         print("The retrieved video has been successfully deleted!")
         exit()
 
 
-if __name__=="__main__":
+if __name__=="__main__": #driving function
     mainFunction()
 
