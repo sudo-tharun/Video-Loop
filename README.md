@@ -3,6 +3,9 @@ The python-based console application downloads video from YouTube (if available 
 
 Programming Language: Python
 
+Limitations: 
+The application cannot perform any operations on the videos that are restricted for download by YouTube.
+
 Reliability
 The system shall be able to operate at least x% of the time.
 
